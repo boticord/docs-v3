@@ -46,7 +46,7 @@ published: true
 | premiumActive	     | true/false                             | Наличие Premium статуса    |
 | 	ups	              | число	                                 | Количество апов	           |
 | 	created	          | число 	                                | Дата создания	             |
-| 	ratings	           | число	                                 | Рейтинг сервера	           |
+| 	rating	           | число	                                 | Рейтинг сервера	           |
 | 	members?	         | число	                                 | Количество участников	     |
 | 	banner	           | число	                                 | ID баннера сайта	          |
 | 	discordBanner?	   | строка	                                | Discord баннер сервера	    |
