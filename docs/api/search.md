@@ -4,14 +4,14 @@ description: Информация по поиску на сайте
 published: true
 ---
 
-# Поиск
+# Поиск {#head}
 
 Для поиска ботов, серверов и комментариев мы используем сервис [Meilisearch](https://www.meilisearch.com).
 Ознакомиться со всеми методами поиска вы можете [здесь](https://www.meilisearch.com/docs/reference/api/overview)
 
 Получить ключ для поиска можно с помощью метода `GET /search-key`
 
-# Индексы поиска
+# Индексы поиска {#indexses}
 
 | Имя 			    | Описание							         | Данные	                                      |
 |------------|-------------------------|----------------------------------------------|
@@ -19,7 +19,7 @@ published: true
 | 	servers		 | Поиск по серверам			    | [MeiliIndexedServer](#meiliindexedserver)	   |
 | comments	  | 	Поиск по комментариям	 | [MeiliIndexedComment](#meiliindexedcomment)	 |
 
-# Типы данных
+# Типы данных {#types}
 
 ## MeiliIndexedComment
 

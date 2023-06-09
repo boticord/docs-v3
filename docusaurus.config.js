@@ -48,7 +48,17 @@ module.exports = {
                 },
                 {
                     type: 'localeDropdown',
-                    position: 'right'
+                    position: 'right',
+                    dropdownItemsAfter: [
+                        {
+                            type: 'html',
+                            value: '<hr style="margin: 0.3rem 0;">',
+                        },
+                        {
+                            href: '/contributing/#translate',
+                            label: 'Help Us Translate',
+                        },
+                    ],
                 },
                 {
                     href: 'https://github.com/boticord',
@@ -64,10 +74,10 @@ module.exports = {
                 {
                     title: 'Документация',
                     items: [
-                        // {
-                        //   label: 'Contributing',
-                        //   to: '/contributing',
-                        // },
+                        {
+                          label: 'Contributing',
+                          to: '/contributing',
+                        },
                         {
                             label: 'REST API',
                             to: '/api/',
@@ -160,7 +170,7 @@ module.exports = {
                 label: 'English',
             },
             by: {
-                label: "by"
+                label: "Беларуская"
             },
             ua: {
                 label: "Українська"
