@@ -4,7 +4,7 @@ description: Информация по поиску на сайте
 published: true
 ---
 
-# Поиск {#}
+# Поиск {#head}
 
 Для поиска ботов, серверов и комментариев мы используем сервис [Meilisearch](https://www.meilisearch.com).
 Ознакомиться со всеми методами поиска вы можете [здесь](https://www.meilisearch.com/docs/reference/api/overview)

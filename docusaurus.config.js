@@ -48,7 +48,17 @@ module.exports = {
                 },
                 {
                     type: 'localeDropdown',
-                    position: 'right'
+                    position: 'right',
+                    dropdownItemsAfter: [
+                        {
+                            type: 'html',
+                            value: '<hr style="margin: 0.3rem 0;">',
+                        },
+                        {
+                            href: '/contributing/#translate',
+                            label: 'Help Us Translate',
+                        },
+                    ],
                 },
                 {
                     href: 'https://github.com/boticord',
