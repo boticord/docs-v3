@@ -3,3 +3,60 @@ title: boticord.js
 description: Основная документация по библиотеке BotiCord.js
 slug: /sdk/boticord.js
 ---
+
+JS/TS библиотека для взаимодействия с BotiCord API
+
+[Репозиторий](https://github.com/quoterdevs/boticord.js)
+[NPM](https://npmjs.com/package/boticord.js)
+
+## Установка
+
+```bash
+extdev@boticord.top:~$ npm install boticord.js
+extdev@boticord.top:~$ npm install github:boticord/boticord.js # альтернатива
+extdev@boticord.top:~$ git clone https://github.com/boticord/boticord.js # в директорию проекта
+```
+
+# Примеры
+Автоматическая публикация статистики (discord.py):
+
+```js
+const { BoticordClient } = require('boticord.js');
+const boticord = new BoticordClient({
+    apiVersion: 3,
+    token: "JWT_TOKEN_HERE",
+    baseAPI: "https://api.arbuz.pro", // Вы также можете использовать другие API URL
+});
+
+// Делать запросы к API очень просто. Найдите любой метод из документации и просто вызовите его через boticord.api.ENDPOINT.METHOD();
+// ... или через boticord.api.ENDPOINT("МОЖЕТ_БЫТЬ_ТЫ_ХОЧЕШЬ_ДОБАВИТЬ_ПАРАМЕТРЫ").METHOD();
+// Листай страницу ниже и смотри примеры:
+
+// Получить информацию о боте || GET /bots/672406367344132116
+boticord.api.bots("672406367344132116").get()
+    .then(async (bot) => {
+        console.log(`${bot.name}'s ID is ${bot.id}. ${bot.name}'s description is ${bot.shortDescription}.`);
+        
+        // Получить информацию о пользователе || GET /users/178404926869733376
+        function userCallback(user) {
+            console.log(`${bot.name}'s owner is ${(owner.discriminator == "0") ? `@${owner.username}` : `${owner.username}#${owner.discriminator}`} with site: ${owner.socials.custom}`);
+        }
+
+        // Очень простой способ (асинхронно)
+        let userData = await boticord.api.users(bot.owner).get();
+
+        // Вы также можете делать запросы и таким способом
+        let userData = await boticord.request("GET", `/users/${bot.owner}`, {});
+        
+        // Затем просто отправьте полученные данные боту
+        userCallback(userData);
+    });
+
+// Обновить статистику бота на сайте || POST (с данными) /bots/672406367344132116/stats
+boticord.api.bots("672406367344132116").stats.post({ members: 15000, guilds: 3000, shards: 2 })
+    .then(() => console.log('Bot statistic has been updated on BotiCord!'));
+```
+
+## Дополнительная информация
+
+Вы можете получить поддержку [здесь](https://discord.gg/GQF3ANKFuw) или на [сервере поддержки BotiCord](https://discord.gg/hkHjW8a) упомянув в чате **@4uuzbroo**/**@cipherka**
