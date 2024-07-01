@@ -8,7 +8,7 @@ const katex = require('rehype-katex');
 module.exports = {
     title: 'BotiCord.top Public API',
     tagline: '',
-    url: 'https://dev-docs.boticord.top',
+    url: 'https://docs.boticord.top',
     baseUrl: '/',
     onBrokenLinks: 'warn',
     onBrokenMarkdownLinks: 'warn',
@@ -16,19 +16,6 @@ module.exports = {
     organizationName: 'BotiCord',
     projectName: 'BotiCord.top Public API',
     themeConfig: {
-        metadata: [{
-            name: 'googlebot',
-            value: 'noindex, nofollow'
-        },{
-            name: 'robots',
-            value: 'noindex, nofollow'
-        }, {
-            name: 'yandex',
-            value: 'none'
-        }, {
-            name: 'robots',
-            value: 'none'
-        }],
         navbar: {
             title: 'BotiCord',
             logo: {
