@@ -4,49 +4,106 @@ description: Basic documentation for the botikotlin library
 slug: /sdk/botikotlin
 ---
 
-An easy-to-use library designed to simplify interaction with the BotiCord API v3
+# Botikotlin Documentation
 
-[GitHub repo](https://github.com/MagM1go/botikotlin/)
-[Docs](https://magmigo2.gitbook.io/boticord-kotlin/)
+### Simplified Kotlin DSL library for interacting with the BotiCord API v3.
 
+[GitHub Repository](https://github.com/MagM1go/botikotlin/)
+[Documentation](https://magmigo2.gitbook.io/boticord-kotlin/)
 
-# Installation
+## Installation
 
-Add to your build.gradle (this example for build.gradle.kts)
+To get started, add the following to your build file (build.gradle/.kts or pom.xml).
+
+### For Gradle
 
 ```gradle
 repositories {
-    maven(url = uri("https://jitpack.io"))
+    maven("https://jitpack.io")
 }
 
 dependencies {
-    implementation("com.github.MagM1go:botikotlin:1.0-beta")
+    implementation("com.github.boticord:botikotlin:VERSION")
 }
 ```
 
-# Usage
-Send bot statistics:
+### For Maven
+
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+        <groupId>com.github.boticord</groupId>
+        <artifactId>botikotlin</artifactId>
+        <version>VERSION</version>
+    </dependency>
+</dependencies>
+```
+
+## Usage
+
+### Sending Bot Statistics
+
+Here’s an example of how to send bot statistics:
 
 ```kotlin
-fun main(args: Array<String>) {
-    val botID: Long = 0000000000000000
-    val client = BotiCordClient("BOTICORD_TOKEN_HERE")
+fun main() {
+    val token = "YOUR_BOTICORD_TOKEN_HERE"
+    val response = boticord(token) {
+        update(BOT_ID, memberCount?, shardCount?, guildCount?)
+    }
 
-    client.updateBotStats(botID, BotStats(
-        members = 10000,
-        guilds = 5000,
-        shards = 3
-    ))
+    logger.info(response)
 }
 ```
 
-Get server information:
+### Fetching User or Bot Information
+
+You can easily retrieve information about a user or bot like this:
 
 ```kotlin
-fun main(args: Array<String>) {
-    val serverID: Long = 0000000000000000
-    val client = BotiCordClient("BOTICORD_TOKEN_HERE")
+fun main() {
+    val api = boticord(token)
+    val response = api.fetch(USER_ID, Type.User)
 
-    println(client.getServer(serverID))
+    logger.info(response)
+
+    // or use the DSL-style approach
+    val responseDsl = boticord(token) {
+        fetch(USER_ID, Type.Bot)
+    }
+
+    logger.info(responseDsl)
 }
 ```
+
+For fetching server information, simply replace `Type.User/Bot` with `Type.Server`.
+
+### Receiving Notifications (e.g., bumps, comments, etc.)
+
+To listen for notifications like bumps or comments, use the following:
+
+```kotlin
+boticord(token) {
+    notifications { event ->
+        logger.info("Received event: $event")
+    }
+}
+```
+
+
+---
+
+If you encounter any difficulties, feel free to reach out!
+
+If you have any difficulties with library, you can ask at [Boticord Support Server](https://get.boticord.top/support).
+
+Or just create an issue at [SDK repository](https://github.com/boticord/botikotlin/issues/new/choose)
+
+Library developer: [MagMigo](https://boticord.top/profile/598387707311554570)
