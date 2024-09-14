@@ -57,7 +57,7 @@ fun main() {
     val token = "YOUR_BOTICORD_TOKEN_HERE"
     val response = boticord(token) {
         update(BOT_ID, memberCount?, shardCount?, guildCount?)
-    }
+    }.await()
 
     logger.info(response)
 }
@@ -77,7 +77,7 @@ fun main() {
     // or use the DSL-style approach
     val responseDsl = boticord(token) {
         fetch(USER_ID, Type.Bot)
-    }
+    }.await()
 
     logger.info(responseDsl)
 }
@@ -94,7 +94,7 @@ boticord(token) {
     notifications { event ->
         logger.info("Received event: $event")
     }
-}
+}.await()
 ```
 
 
